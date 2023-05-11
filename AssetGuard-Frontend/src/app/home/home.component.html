@@ -1,0 +1,97 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-lg-12">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Early Warning System</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-header">
+          Temperature Sensor Data
+        </div>
+        <div class="card-body" (click)="startTemperatureSensor()">
+          <p class="card-text">{{ latestTemperatureReading?.sensor_name }}: {{ latestTemperatureReading?.reading_value }}</p>
+          <p class="card-subtitle text-muted">{{ latestTemperatureReading?.reading_timestamp | date:'short' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="card" (click)="startCoolingSensor()">
+        <div class="card-header">
+          Cooling Sensor Data
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ latestCoolingReading?.sensor_name }}: {{ latestCoolingReading?.reading_value }}</p>
+          <p class="card-subtitle text-muted">{{ latestCoolingReading?.reading_timestamp | date:'short' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="card" (click)="startVoltageSensor()">
+        <div class="card-header">
+          Voltage Sensor Data
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ latestVoltageReading?.sensor_name }}: {{ latestVoltageReading?.reading_value }}</p>
+          <p class="card-subtitle text-muted">{{ latestVoltageReading?.reading_timestamp | date:'short' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-3">
+      <div class="card" (click)="startBandwidthSensor()">
+        <div class="card-header">
+          Bandwidth Sensor Data
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ latestBandwidthReading?.sensor_name }}: {{ latestBandwidthReading?.reading_value }}</p>
+          <p class="card-subtitle text-muted">{{ latestBandwidthReading?.reading_timestamp | date:'short' }}</p>
+        </div>
+      </div>
+      <div class="card" (click)="startTrafficSensor()">
+        <div class="card-header">
+          Traffic Sensor Data
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ latestTrafficReading?.sensor_name }}: {{ latestTrafficReading?.reading_value }}</p>
+          <p class="card-subtitle text-muted">{{ latestTrafficReading?.reading_timestamp | date:'short' }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <div class="col-lg-3">
+      <!-- Empty card for alignment -->
+      <div class="card" style="visibility: hidden;"></div>
+    </div>
+    <div class="col-lg-6">
+      <div *ngIf="selectedSensorType">
+        <app-chart [sensorName]="selectedSensorType"></app-chart>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-header">
+          Notifications
+        </div>
+        <div class="card-body">
+          <!-- Notifications or alerts content goes here -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+  <div class="row mt-4">
+    <div class="col-lg-12">
+      <button (click)="stopReading()" class="btn btn-primary">Stop Sensor</button>
+    </div>
+  </div>
