@@ -28,20 +28,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   latestTrafficReading  : Reading | undefined;
   sensorType: string = '';
   selectedSensorType: string | undefined;
+  selectedSensorStats: any;
 
-
-  // isTemperatureSensorStarted = false;
-  // isCoolingSensorStarted = false;
-  // isVoltageSensorStarted = false;
-  // isBandwidthSensorStarted = false;
-  // isTrafficSensorStarted = false;
   
   temperatureSubscription: Subscription | undefined;
   coolingSubscription: Subscription | undefined;
   voltageSubscription: Subscription | undefined;
   bandwidthSubscription: Subscription | undefined;
   trafficSubscription: Subscription | undefined;
-
+  selectedSensorSubscription: Subscription | undefined;
   
   sensorName!: string;
   constructor(private sensorService: SensorService,
@@ -71,7 +66,41 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.stopReading();
   }
 
+  selectSensor(sensorType: string) {
+    
+    console.log(sensorType)
+    if (sensorType === 'TEMPERATURE') {
+      this.selectedSensorSubscription?.unsubscribe();
+      this.selectedSensorSubscription = interval(1000).subscribe(()=>{
+        this.selectedSensorStats = this.latestTemperatureReading;
+      })
 
+    } else if (sensorType === 'COOLING') {
+      this.selectedSensorSubscription?.unsubscribe();
+      this.selectedSensorSubscription = interval(1000).subscribe(()=>{
+        this.selectedSensorStats = this.latestCoolingReading;
+      })
+    
+    } else if (sensorType === 'VOLTAGE') {
+      this.selectedSensorSubscription?.unsubscribe();
+      this.selectedSensorSubscription = interval(1000).subscribe(()=>{
+        this.selectedSensorStats = this.latestVoltageReading;
+      })
+    } else if (sensorType === 'BANDWIDTH') {
+      this.selectedSensorSubscription?.unsubscribe();
+      this.selectedSensorSubscription = interval(1000).subscribe(()=>{
+        this.selectedSensorStats = this.latestBandwidthReading;
+      })
+    } else if (sensorType === 'TRAFFIC') {
+      this.selectedSensorSubscription?.unsubscribe();
+      this.selectedSensorSubscription = interval(1000).subscribe(()=>{
+        this.selectedSensorStats = this.latestTrafficReading;
+      })
+    }
+  
+    this.selectedSensorType = sensorType;
+  }
+  
 
   startTemperatureSensor(): void {
  

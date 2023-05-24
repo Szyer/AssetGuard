@@ -202,7 +202,7 @@ export class ChartComponent implements OnInit, OnDestroy {
 
     const formattedTimestamps: string[] = timestamps.map((timestamp) => {
       const date = new Date(timestamp);
-      return this.datePipe.transform(date, 'mediumTime')!;
+      return this.datePipe.transform(date, 'short')!;
     });
 
     series.setData(temperatureValues, true, false);

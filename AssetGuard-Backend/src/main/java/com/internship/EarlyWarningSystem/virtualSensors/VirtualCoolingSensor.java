@@ -24,7 +24,7 @@ public class VirtualCoolingSensor implements SensorAll {
 
     private LocalDateTime lastUpdateTime = LocalDateTime.now();
 
-    private double coolingTemperature = getRandomTemperatureInRange(60.0, 80.0);
+    private double coolingTemperature = getRandomTemperatureInRange(60.0, 70.0);
 
     // Add a field to store the current temperature reading
     private double currentTemperature = getRandomTemperatureInRange(35.0, 45.0);
@@ -51,7 +51,7 @@ public class VirtualCoolingSensor implements SensorAll {
 
         // Use the current temperature reading to adjust the cooling temperature
         double minTemperature = 60.0;
-        double maxTemperature = 90.0;
+        double maxTemperature = 75.0;
         double temperatureRange = maxTemperature - minTemperature;
         double baseTemperature;
 
@@ -68,7 +68,7 @@ public class VirtualCoolingSensor implements SensorAll {
         }
 
         // Add some random noise to the cooling temperature
-        double noiseRange = temperatureRange * 0.05;
+        double noiseRange = temperatureRange * 0.1;
         double randomNoise = getRandomTemperatureInRange(-noiseRange, noiseRange);
         coolingTemperature = baseTemperature + randomNoise;
 
@@ -76,11 +76,7 @@ public class VirtualCoolingSensor implements SensorAll {
         return coolingTemperature;
     }
 
-    private double getCurrentTemperature() {
-        // Implement your method to get the current temperature here.
-        // This method should return a double value representing the current temperature.
-        // You can use any method to get the current temperature, such as a database query or a call to an API.
-        // For this example, we'll just return a random temperature between 0 and 100 degrees Celsius:
+    private double getCurrentTemperature(){
         return getRandomTemperatureInRange(35.0, 45.0);
     }
 

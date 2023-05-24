@@ -12,6 +12,7 @@ import { HighchartsChartComponent, HighchartsChartModule } from 'highcharts-angu
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from '../app/auth/jwt.interceptor';
 import { ChartComponent } from './chart/chart.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ChartComponent } from './chart/chart.component';
     HttpClientModule,  
     BrowserAnimationsModule,
     AppRoutingModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    FontAwesomeModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }

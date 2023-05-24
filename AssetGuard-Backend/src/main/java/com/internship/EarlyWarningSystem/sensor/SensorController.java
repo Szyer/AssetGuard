@@ -83,11 +83,6 @@ public class SensorController {
         return ResponseEntity.ok(resultList);
     }
 
-//    @GetMapping("/readings/temperatureData")
-//    public ResponseEntity<List<Map<String, Object>>> getTemperatureReadingsWithSensorInfo() {
-//        List<Map<String, Object>> resultList = readingRepository.getTemperatureReadingsWithSensorInfo();
-//        return ResponseEntity.ok(resultList);
-//    }
     @GetMapping("/readings/temperature")
     public ResponseEntity<List<Map<String, Object>>> getTemperatureReadingValues() {
     List<Map<String, Object>> resultList = readingRepository.getTemperatureReadingValues();
@@ -117,14 +112,6 @@ public class SensorController {
         List<Map<String, Object>> resultList = readingRepository.getVoltageReadingValues();
         return ResponseEntity.ok(resultList);
     }
-
-
-//    @GetMapping("/readings/temperature")
-//    public ResponseEntity<List<Object>> getTemperatureReadings() {
-//        List<Object> temperatureReadings = readingRepository.getTemperatureReadings();
-//        return ResponseEntity.ok(temperatureReadings);
-//    }
-
 
 }
 

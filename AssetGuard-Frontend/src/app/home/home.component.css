@@ -1,42 +1,101 @@
+body {
+  background-color: #f2f2f2;
+  padding: 20px;
+  overflow: hidden;
+}
 
-  body {
-    background-color: #f2f2f2;
-    padding: 20px;
-  }
+.navbar {
+  background-color: #ffffff;
+  box-shadow: 0px 3px 6px #00000029;
+}
 
-  .navbar {
-    background-color: #ffffff;
-    box-shadow: 0px 3px 6px #00000029;
-  }
+h1 {
+  font-size: 36px;
+  font-weight: bold;
+  margin-top: 20px;
+}
 
-  h1 {
-    font-size: 36px;
-    font-weight: bold;
-    margin-top: 20px;
-  }
+.card {
+  margin-top: 20px;
+  box-shadow: 0px 3px 6px #00000029;
+}
 
-  .card {
-    margin-top: 20px;
-    box-shadow: 0px 3px 6px #00000029;
-  }
+.card-header {
+  background-color: #ffffff;
+  border-bottom: 1px solid #dee2e6;
+  font-weight: bold;
+}
 
-  .card-header {
-    background-color: #ffffff;
-    border-bottom: 1px solid #dee2e6;
-    font-weight: bold;
-  }
+.card-body {
+  padding: 20px;
+}
 
-  .card-body {
-    padding: 20px;
-  }
+.btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+}
 
-  .btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
-  }
+.btn-primary:hover {
+  background-color: #0069d9;
+  border-color: #0062cc;
+}
 
-  .btn-primary:hover {
-    background-color: #0069d9;
-    border-color: #0062cc;
-  }
+.sensors-container {
+  height: calc(100vh - 100px); /* Adjust the height as needed, subtracting the height of the navbar */
+  overflow-y: auto;
+}
 
+/* .chart-container {
+  height: calc(100vh); /* Adjust the height as needed, subtracting the height of the navbar */
+
+/* } */ */
+
+.selected-stats-container {
+  height: calc(100vh - 100px); /* Adjust the height as needed, subtracting the height of the navbar */
+  overflow-y: auto;
+}
+
+.notifications-container {
+  height: calc(100vh - 100px); /* Adjust the height as needed, subtracting the height of the navbar */
+  overflow-y: auto;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 5px;
+  position: fixed; /* Fix the scrollbar position */
+  z-index: 9999; /* Ensure the scrollbar is on top of other elements */
+  right: 0;
+  background-color: transparent; /* Set the scrollbar background color to transparent */
+}
+
+::-webkit-scrollbar-track {
+  background-color: transparent; /* Set the track background color to transparent */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: transparent; /* Set the thumb background color to transparent */
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555; /* Change the thumb background color on hover */
+}
+
+.sensor-card.selected {
+  background-color: white;
+}
+
+.sensor-card.selected .card-header {
+  background-color: inherit;
+  color: inherit;
+}
+
+.sensor-card.selected .card-body {
+  background-color: burlywood;
+  color: white;
+}
+
+.sensor-card.selected .card-subtitle {
+  color: white;
+}

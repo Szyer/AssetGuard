@@ -8,21 +8,22 @@
   </div>
 
   <div class="row mt-4">
-    <div class="col-lg-3">
-      <div class="card">
+    <!-- First Division: Sensors -->
+    <div class="col-lg-3 sensors-container">
+      <div class="card sensor-card" (click)="startTemperatureSensor()" (click)="selectSensor('TEMPERATURE')" [class.selected]="selectedSensorType === 'TEMPERATURE'">
         <div class="card-header">
+          <i class="fa fa-thermometer sensor-icon"></i>
           Temperature Sensor Data
         </div>
-        <div class="card-body" (click)="startTemperatureSensor()">
+        <div class="card-body">
           <p class="card-text">{{ latestTemperatureReading?.sensor_name }}: {{ latestTemperatureReading?.reading_value }}</p>
           <p class="card-subtitle text-muted">{{ latestTemperatureReading?.reading_timestamp | date:'short' }}</p>
         </div>
       </div>
-    </div>
 
-    <div class="col-lg-3">
-      <div class="card" (click)="startCoolingSensor()">
+      <div class="card sensor-card" (click)="startCoolingSensor()" (click)="selectSensor('COOLING')" [class.selected]="selectedSensorType === 'COOLING'">
         <div class="card-header">
+          <i class="fa fa-snowflake sensor-icon"></i>
           Cooling Sensor Data
         </div>
         <div class="card-body">
@@ -30,11 +31,10 @@
           <p class="card-subtitle text-muted">{{ latestCoolingReading?.reading_timestamp | date:'short' }}</p>
         </div>
       </div>
-    </div>
 
-    <div class="col-lg-3">
-      <div class="card" (click)="startVoltageSensor()">
+      <div class="card sensor-card" (click)="startVoltageSensor()" (click)="selectSensor('VOLTAGE')" [class.selected]="selectedSensorType === 'VOLTAGE'">
         <div class="card-header">
+          <i class="fa fa-bolt sensor-icon"></i>
           Voltage Sensor Data
         </div>
         <div class="card-body">
@@ -42,11 +42,10 @@
           <p class="card-subtitle text-muted">{{ latestVoltageReading?.reading_timestamp | date:'short' }}</p>
         </div>
       </div>
-    </div>
 
-    <div class="col-lg-3">
-      <div class="card" (click)="startBandwidthSensor()">
+      <div class="card sensor-card" (click)="startBandwidthSensor()" (click)="selectSensor('BANDWIDTH')" [class.selected]="selectedSensorType === 'BANDWIDTH'">
         <div class="card-header">
+          <i class="fa fa-wifi sensor-icon"></i>
           Bandwidth Sensor Data
         </div>
         <div class="card-body">
@@ -54,8 +53,10 @@
           <p class="card-subtitle text-muted">{{ latestBandwidthReading?.reading_timestamp | date:'short' }}</p>
         </div>
       </div>
-      <div class="card" (click)="startTrafficSensor()">
+
+      <div class="card sensor-card" (click)="startTrafficSensor()" (click)="selectSensor('TRAFFIC')" [class.selected]="selectedSensorType === 'TRAFFIC'">
         <div class="card-header">
+          <i class="fa fa-car sensor-icon"></i>
           Traffic Sensor Data
         </div>
         <div class="card-body">
@@ -64,20 +65,49 @@
         </div>
       </div>
     </div>
-  </div>
 
-  <div class="row mt-4">
-    <div class="col-lg-3">
-      <!-- Empty card for alignment -->
-      <div class="card" style="visibility: hidden;"></div>
-    </div>
+    <!-- Second Division: Chart and Selected Sensor Stats -->
+
     <div class="col-lg-6">
-      <div *ngIf="selectedSensorType">
-        <app-chart [sensorName]="selectedSensorType"></app-chart>
+      <div class="chart-container" style="overflow-y: auto;">
+        <div *ngIf="selectedSensorType">
+          <app-chart [sensorName]="selectedSensorType"></app-chart>
+        </div>
+    
+        <div class="row">
+          <div class="col-lg-12 d-flex justify-content-end">
+            <button (click)="stopReading()" class="btn btn-danger">Stop Sensor</button>
+          </div>
+        </div>
+    
+        <div class="selected-stats-container">
+          <!-- Display selected sensor stats here -->
+          <div class="card selected-sensor-card" *ngIf="selectedSensorStats">
+            <div class="card-body d-flex align-items-center">
+              <div class="selected-sensor-reading-value">
+                <h4 class="mb-0">{{ selectedSensorStats?.reading_value | number:'1.2-2' }}</h4>
+              </div>
+              <div class="ml-auto text-right" style="margin-left: 430px;">
+                <h5 style="margin-bottom: 0;">{{ selectedSensorStats?.sensor_name }}</h5>
+                <p class="card-subtitle text-muted" style="margin-bottom: 0; ">{{ selectedSensorStats?.reading_timestamp | date:'short' }}</p>
+              </div>
+            </div>
+          </div>
+          <div class="card selected-sensor-card no-data-card" *ngIf="!selectedSensorStats">
+            <div class="card-body">
+              <p class="card-text">No data available</p>
+            </div>
+          </div>
+        </div>
+        
+        
       </div>
     </div>
-    <div class="col-lg-3">
-      <div class="card">
+    
+    
+
+    <!-- Third Division: Notifications -->
+     <div class="col-lg-3 notifications-container">
         <div class="card-header">
           Notifications
         </div>
@@ -87,11 +117,4 @@
       </div>
     </div>
   </div>
-</div>
 
-
-  <div class="row mt-4">
-    <div class="col-lg-12">
-      <button (click)="stopReading()" class="btn btn-primary">Stop Sensor</button>
-    </div>
-  </div>

@@ -40,11 +40,11 @@ public class VirtualTemperatureSensor implements SensorAll {
         double temperatureRange = maxTemperature - minTemperature;
         double baseTemperature;
 
-        if (temperature > 45.0) {
+        if (temperature > 40.0) {
             baseTemperature = getRandomTemperatureInRange(minTemperature, minTemperature + temperatureRange / 4, 2.0);
-        } else if (temperature > 35.0) {
+        } else if (temperature > 30.0) {
             double currentTemperatureRange = temperatureRange / 2;
-            double currentTemperatureOffset = temperature - 35.0;
+            double currentTemperatureOffset = temperature - 30.0;
             double currentTemperatureOffsetPercent = currentTemperatureOffset / 10.0; // scale offset to be between 0 and 1
             double currentTemperatureOffsetAmount = currentTemperatureOffsetPercent * currentTemperatureOffset;
             baseTemperature = getRandomTemperatureInRange(minTemperature + currentTemperatureOffsetAmount, minTemperature + temperatureRange / 2, 2.0);
@@ -62,7 +62,7 @@ public class VirtualTemperatureSensor implements SensorAll {
     private double getCurrentTemperature() {
         // Implement your method to get the current temperature here.
         // This method should return a double value representing the current temperature.
-        return getRandomTemperatureInRange(35.0, 45.0, 2.0);
+        return getRandomTemperatureInRange(30.0, 40.0, 2.0);
     }
 
     private double getRandomTemperatureInRange(double minTemperature, double maxTemperature, double maxFluctuation) {
