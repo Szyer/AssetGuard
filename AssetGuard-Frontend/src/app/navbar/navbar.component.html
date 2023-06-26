@@ -1,0 +1,44 @@
+
+
+<nav class="navbar navbar-expand-custom navbar-mainbg">
+    <a class="navbar-brand navbar-logo" href="#">AssetGuard</a>
+    <button class="navbar-toggler" type="button" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <i class="fas fa-bars text-white"></i>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto">
+        <div class="hori-selector">
+          <div class="left"></div>
+          <div class="right"></div>
+        </div>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/dashboard"><i class="fas fa-tachometer-alt"></i>Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);"><i class="far fa-clone"></i>Components</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);"><i class="far fa-chart-bar"></i>Charts</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="javascript:void(0);"><i class="far fa-copy"></i>Help</a>
+        </li>
+        
+      </ul>
+   
+      <div style="margin-left: auto; margin-right: 2%;">
+        <a class="nav-link dropdown-toggle" routerLink="/dashboard" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="color: white;"><i class="fas fa-user text-white"></i>{{ signedInEmail }}
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item" routerLink="/dashboard">Logout</a></li>  
+        </ul>
+        
+        
+      
+    </div>
+    </div>
+  </nav>
+  
+  <router-outlet></router-outlet>
+  

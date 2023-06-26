@@ -21,11 +21,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   sensorData: Reading[] = [];
   filteredData: Reading[] = [];
   
-  latestTemperatureReading: Reading | undefined;
-  latestCoolingReading: Reading | undefined;
-  latestVoltageReading: Reading | undefined;
-  latestBandwidthReading : Reading | undefined;
-  latestTrafficReading  : Reading | undefined;
+  latestTemperatureReading: any;
+  latestCoolingReading: any;
+  latestVoltageReading: any;
+  latestBandwidthReading : any;
+  latestTrafficReading  : any;
   sensorType: string = '';
   selectedSensorType: string | undefined;
   selectedSensorStats: any;

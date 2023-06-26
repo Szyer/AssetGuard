@@ -66,7 +66,7 @@ export class ChartComponent implements OnInit, OnDestroy {
       series: [
         {
           type: 'line',
-          name: 'Temperature',
+          name: yText,
           data: []
         }
       ],

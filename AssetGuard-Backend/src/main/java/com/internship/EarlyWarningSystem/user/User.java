@@ -28,6 +28,7 @@ public class User implements UserDetails {
     private String password;
     private boolean IsVerified;
 
+
     @Enumerated(EnumType.STRING)
     private Role role;
     @Override

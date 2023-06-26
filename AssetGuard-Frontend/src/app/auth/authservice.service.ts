@@ -11,11 +11,21 @@ export interface AuthResponse {
   providedIn: 'root'
 })
 export class AuthserviceService {
+  signedInEmail: string = '';
   private readonly TOKEN_KEY = 'auth_token';
   constructor(
     private http : HttpClient,
    ) { }
 
+   setSignedInEmail(email: string) {
+    this.signedInEmail = email;
+    localStorage.setItem('email',email);
+  }
+
+  getSignedInEmail() {
+    return localStorage.getItem('email');
+
+  }
  
   register(firstName: string, lastName: string, email: string, password: string) : Observable<any> {
     const body = { firstName, lastName, email, password };

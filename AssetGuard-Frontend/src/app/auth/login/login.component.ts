@@ -10,6 +10,7 @@ import { AuthResponse } from '../authservice.service';
 export class LoginComponent {
   email = '';
   password = '';
+  
 
   constructor( 
     private authService : AuthserviceService,
@@ -20,7 +21,8 @@ export class LoginComponent {
       this.authService.login(this.email, this.password).subscribe(
         (response: AuthResponse) => {
           console.log(response);
-          this.router.navigate(['/home']);
+          this.authService.setSignedInEmail(this.email);
+          this.router.navigate(['/dashboard']);
         },
         (error: any) => {
           console.log(error);
