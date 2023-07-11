@@ -1,16 +1,12 @@
 package com.internship.EarlyWarningSystem.sensor;
 
 
-import com.internship.EarlyWarningSystem.reading.Reading;
 import com.internship.EarlyWarningSystem.reading.ReadingRepository;
-import com.internship.EarlyWarningSystem.virtualSensors.*;
+import com.internship.EarlyWarningSystem.virtualSensors.DefaultSensors.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.print.attribute.standard.JobKOctets;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 @CrossOrigin(origins = "http://localhost:4200")
@@ -62,6 +58,7 @@ public class SensorController {
                 bandwidthSensor = new VirtualBandwidthSensor();
                 sensorService.startReading(sensor, bandwidthSensor);
                 break;
+
 
             default:
                 throw new IllegalArgumentException("Unknown sensor type: " + sensorType);

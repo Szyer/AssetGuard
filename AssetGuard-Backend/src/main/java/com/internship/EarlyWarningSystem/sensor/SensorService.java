@@ -1,6 +1,6 @@
 package com.internship.EarlyWarningSystem.sensor;
 
-import com.internship.EarlyWarningSystem.virtualSensors.SensorAll;
+import com.internship.EarlyWarningSystem.virtualSensors.DefaultSensors.SensorAll;
 
 public interface SensorService {
     public void startReading(Sensor sensor, SensorAll sensorAll);

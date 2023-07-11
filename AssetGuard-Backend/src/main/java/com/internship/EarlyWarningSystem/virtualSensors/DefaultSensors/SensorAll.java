@@ -1,4 +1,4 @@
-package com.internship.EarlyWarningSystem.virtualSensors;
+package com.internship.EarlyWarningSystem.virtualSensors.DefaultSensors;
 
 import com.internship.EarlyWarningSystem.reading.Reading;
 import com.internship.EarlyWarningSystem.sensor.SensorType;

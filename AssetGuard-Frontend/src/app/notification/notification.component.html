@@ -1,0 +1,95 @@
+<div class="col-lg notifications-container" style="margin-right: 1%;">
+    <div class="card-header">
+      Notifications
+    </div>
+    <div class="card selected-sensor-card p-3">
+      <div *ngIf="latestTemperatureReading?.reading_value < 48; else elseBlock">
+        <div class="alert alert-success align-items-center">
+          <div>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            Temperature Status: Good
+          </div>
+        </div>
+      </div>
+      <ng-template #elseBlock>
+        <div class="alert alert-danger align-items-center">
+          <div>
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            Temperature Status: Bad
+          </div>
+        </div>
+      </ng-template>
+  
+      <div *ngIf="latestCoolingReading?.reading_value > 68; else elseBlock1">
+        <div class="alert alert-success align-items-center">
+          <div>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            Cooling Status: Good
+          </div>
+        </div>
+      </div>
+      <ng-template #elseBlock1>
+        <div class="alert alert-danger align-items-center">
+          <div>
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            Cooling Status: Bad
+          </div>
+        </div>
+      </ng-template>
+  
+      <!-- for voltage -->
+      <div *ngIf="latestVoltageReading?.reading_value > 220; else elseBlock2">
+        <div class="alert alert-success align-items-center">
+          <div>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            Voltage Status: Good
+          </div>
+        </div>
+      </div>
+      <ng-template #elseBlock2>
+        <div class="alert alert-danger align-items-center">
+          <div>
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            Voltage Status: Bad
+          </div>
+        </div>
+      </ng-template>
+  
+      <!-- for bandwidth -->
+      <div *ngIf="latestBandwidthReading?.reading_value < 2500; else elseBlock3">
+        <div class="alert alert-success align-items-center">
+          <div>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            Bandwidth Status: Good
+          </div>
+        </div>
+      </div>
+      <ng-template #elseBlock3>
+        <div class="alert alert-danger align-items-center">
+          <div>
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            Bandwidth Status: Bad
+          </div>
+        </div>
+      </ng-template>
+  
+      <!-- for traffic -->
+      <div *ngIf="latestTrafficReading?.reading_value < 600; else elseBlock4">
+        <div class="alert alert-success align-items-center">
+          <div>
+            <i class="fa fa-thumbs-up" aria-hidden="true"></i>
+            Traffic Status: Good
+          </div>
+        </div>
+      </div>
+      <ng-template #elseBlock4>
+        <div class="alert alert-danger align-items-center">
+          <div>
+            <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+            Traffic Status: Bad
+          </div>
+        </div>
+      </ng-template>
+    </div>
+  </div>
+  

@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ViewChild } from '@angular/core';
+import { Component, OnInit, OnDestroy, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Reading } from '../sensor/Reading';
 import { SensorService } from '../sensor/sensor.service';
 import { interval, Subscription } from 'rxjs';
@@ -6,6 +6,7 @@ import { takeWhile } from 'rxjs/operators';
 import { HighchartsChartComponent } from 'highcharts-angular';
 import { Router } from '@angular/router';
 import { ChartComponent } from '../chart/chart.component';
+import { AddsenserService } from '../addsensor/addsenser.service';
 
 
 
@@ -17,6 +18,7 @@ import { ChartComponent } from '../chart/chart.component';
 export class HomeComponent implements OnInit, OnDestroy {
 
   @ViewChild(ChartComponent) chartComponent!: ChartComponent;
+  @Output() myEvent = new EventEmitter();
 
   sensorData: Reading[] = [];
   filteredData: Reading[] = [];
@@ -40,30 +42,33 @@ export class HomeComponent implements OnInit, OnDestroy {
   
   sensorName!: string;
   constructor(private sensorService: SensorService,
-    private router: Router) { }
+    private router: Router,
+    private addSensorService:AddsenserService) { }
 
     ngOnInit(): void {
 
-        this.retrieveSensorStatus();   
-        this.startTemperatureSensor();
+        this.retrieveSensorStatus();  
+
+        this.sensorService.startTemperatureSensor();
       
     
-        this.startCoolingSensor();
+        this.sensorService.startCoolingSensor();
       
       
-        this.startVoltageSensor();
+        this.sensorService.startVoltageSensor();
       
       
-        this.startBandwidthSensor();
+        this.sensorService.startBandwidthSensor();
       
       
-        this.startTrafficSensor();
+        this.sensorService.startTrafficSensor();
       
     }
     
 
+
   ngOnDestroy(): void {
-    this.stopReading();
+    this.sensorService.stopReading();
   }
 
   selectSensor(sensorType: string) {
@@ -101,7 +106,30 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.selectedSensorType = sensorType;
   }
   
+  // startTrafficSensor(){
 
+  //   this.sensorService.startTrafficSensorR();
+  // }
+
+  // startTemperatureSensor(){
+  //   this.sensorService.startTemperatureSensorR();
+  // }
+
+  // startCoolingSensor(){
+  //   this.sensorService.startCoolingSensorR();
+  // }
+
+  // startVoltageSensor(){
+  //   this.sensorService.startVoltageSensorR();
+  // }
+
+  // startBandwidthSensor(){
+  //   this.sensorService.startBandwidthSensorR();
+  // }
+
+  // stopReading(){
+  // this.sensorService.stopReadingR();
+  // }
   startTemperatureSensor(): void {
  
     this.sensorService.startTemperatureSensor().subscribe(
@@ -214,6 +242,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       },
       error => console.log(error)
     );
+    this.addSensorService.shutdown().subscribe(
+      data => {
+        console.log(data);
+      },
+      error => console.log(error)
+    );;
    
   }
   
@@ -238,9 +272,11 @@ export class HomeComponent implements OnInit, OnDestroy {
           this.latestTrafficReading = this.filteredData[this.filteredData.length - 1];
           localStorage.setItem('latestTrafficReading', JSON.stringify(this.latestTrafficReading));
         }
-      },
+         // Emit the latest readings
+            },
       error => console.log(error)
     );
+     
   }
   
 

@@ -2,8 +2,7 @@ package com.internship.EarlyWarningSystem.sensor;
 
 import com.internship.EarlyWarningSystem.reading.Reading;
 import com.internship.EarlyWarningSystem.reading.ReadingRepository;
-import com.internship.EarlyWarningSystem.sensor.SensorRepository;
-import com.internship.EarlyWarningSystem.virtualSensors.SensorAll;
+import com.internship.EarlyWarningSystem.virtualSensors.DefaultSensors.SensorAll;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

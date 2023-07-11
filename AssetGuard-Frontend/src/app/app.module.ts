@@ -13,13 +13,15 @@ import { JwtInterceptor } from '../app/auth/jwt.interceptor';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { MapComponent } from './map/map.component';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ChartComponent } from './chart/chart.component';
 import { AreamapComponent } from './areamap/areamap.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { DatacentersComponent } from './datacenters/datacenters.component';
+import { AddsensorComponent } from './addsensor/addsensor.component';
+import { NotificationComponent } from './notification/notification.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +34,9 @@ import { DatacentersComponent } from './datacenters/datacenters.component';
     AreamapComponent,
     NavbarComponent,
     DashboardComponent,
-    DatacentersComponent
+    DatacentersComponent,
+    AddsensorComponent,
+    NotificationComponent
     
   ],
   imports: [
@@ -42,10 +46,12 @@ import { DatacentersComponent } from './datacenters/datacenters.component';
     BrowserAnimationsModule,
     AppRoutingModule,
     HighchartsChartModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ReactiveFormsModule
   ],
   providers: [
     // { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true }
+    HomeComponent
   ],
   bootstrap: [AppComponent]
 })

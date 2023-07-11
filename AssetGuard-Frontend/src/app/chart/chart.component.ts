@@ -17,6 +17,9 @@ export class ChartComponent implements OnInit, OnDestroy {
   fullView: boolean = false;
   subscription: Subscription | undefined;
   selectedType! : string 
+  selectedFilter: string = 'day';
+
+
    @Input() sensorName!:string;
   @Output() chartViewClicked: EventEmitter<void> = new EventEmitter<void>();
   constructor(private dataService: SensorService, private datePipe: DatePipe, private route : ActivatedRoute) {}
@@ -197,17 +200,21 @@ export class ChartComponent implements OnInit, OnDestroy {
     const series = this.chart.series[0];
     const xAxis = this.chart.xAxis[0];
 
-    const temperatureValues = this.sensorData.map((item) => item.reading_value);
-    const timestamps = this.sensorData.map((item) => item.reading_timestamp);
+    
 
-    const formattedTimestamps: string[] = timestamps.map((timestamp) => {
-      const date = new Date(timestamp);
+    const sensorValues = this.sensorData.map((item) => [item.reading_timestamp, item.reading_value]);
+
+    series.setData(sensorValues, true, false);
+
+    const formattedTimestamps: string[] = this.sensorData.map((item) => {
+      const date = new Date(item.reading_timestamp);
       return this.datePipe.transform(date, 'short')!;
     });
 
-    series.setData(temperatureValues, true, false);
     xAxis.setCategories(formattedTimestamps, true);
   }
+
+ 
 
   toggleFullView() {
     this.fullView = !this.fullView;

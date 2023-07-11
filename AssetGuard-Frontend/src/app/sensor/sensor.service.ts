@@ -1,16 +1,20 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Injectable, ViewChild } from '@angular/core';
+import { Observable, Subscription, forkJoin, interval } from 'rxjs';
 import { Reading } from './Reading';
+import { ChartComponent } from '../chart/chart.component';
 @Injectable({
   providedIn: 'root'
 })
 export class SensorService {
+
   token = localStorage.getItem('auth_token');
   constructor(private http : HttpClient) {}
   private readonly BASE_URL = 'http://localhost:8081/api/v1/readings';
   private readonly baseUrl = 'http://localhost:8081/api/v1/';
 
+  sensorT !: string;
+  sensorG !: string;
   
 
 
@@ -34,31 +38,46 @@ export class SensorService {
     const url = `${this.BASE_URL}?sensorType=${sensorType}`;
     return this.http.get<any[]>(url, httpOptions);
   }
+
+  urlStart(sensorT : string): Observable<string>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.post<string>(`${this.baseUrl}Sensor/${this.sensorT}`, {}, { headers });
+
+  }
+
+  urlGet(sensorG : string) : Observable<any>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.get(`http://localhost:8081/api/v1/readings/${this.sensorG}`, { headers });
+
+  }
   
 
 
  
   startTemperatureSensor(): Observable<string> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.post<string>(`${this.baseUrl}Sensor/TEMPERATURE`, {}, { headers });
+    this.sensorT = 'TEMPERATURE'
+
+    // const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    // return this.http.post<string>(`${this.baseUrl}Sensor/TEMPERATURE`, {}, { headers });
+    return this.urlStart(this.sensorT);
   }
 
   startCoolingSensor(): Observable<string> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.post<string>(`${this.baseUrl}Sensor/COOLING`, {}, { headers });
+    this.sensorT = 'COOLING'
+    return this.urlStart(this.sensorT);
   }
 
   startVoltageSensor(): Observable<string> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.post<string>(`${this.baseUrl}Sensor/VOLTAGE`, {}, { headers });
+    this.sensorT='VOLTAGE';
+    return this.urlStart(this.sensorT);
   }
   startBandwidthSensor(): Observable<string> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.post<string>(`${this.baseUrl}Sensor/BANDWIDTH`, {}, { headers });
+    this.sensorT='BANDWIDTH'
+    return this.urlStart(this.sensorT);
   }
   startTrafficSensor(): Observable<string> {
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.post<string>(`${this.baseUrl}Sensor/TRAFFIC`, {}, { headers });
+    this.sensorT='TRAFFIC'
+    return this.urlStart(this.sensorT);
   }
 
   stopReading(): Observable<string> {
@@ -66,29 +85,35 @@ export class SensorService {
     return this.http.post<string>(`${this.baseUrl}shutdown`, {}, { headers });
   }
 
+
+
+  
+
   getTemperatureData(): Observable<any>{
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.get(`http://localhost:8081/api/v1/readings/temperature`, { headers });
+    this.sensorG = 'temperature'
+    return this.urlGet(this.sensorG);
   }
 
   getCoolingData(): Observable<any>{
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.get(`http://localhost:8081/api/v1/readings/cooling`, { headers });
+    this.sensorG='cooling';
+    return this.urlGet(this.sensorG);
   }
 
   getVoltageData(): Observable<any>{
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.get(`http://localhost:8081/api/v1/readings/voltage`, { headers });
+    this.sensorG='voltage'
+    return this.urlGet(this.sensorG);
   }
   
   getBandwidthData(): Observable<any>{
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.get(`http://localhost:8081/api/v1/readings/bandwidth`, { headers });
+    this.sensorG='bandwidth'
+    return this.urlGet(this.sensorG);
   }
   
   getTrafficData(): Observable<any>{
-    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
-    return this.http.get(`http://localhost:8081/api/v1/readings/traffic`, { headers });
+    this.sensorG='traffic'
+    return this.urlGet(this.sensorG);
   }
 
+
+  
 }

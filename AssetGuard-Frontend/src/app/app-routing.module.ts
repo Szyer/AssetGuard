@@ -8,6 +8,8 @@ import { ChartComponent } from './chart/chart.component';
 import { MapComponent } from './map/map.component';
 import { AreamapComponent } from './areamap/areamap.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { DatacentersComponent } from './datacenters/datacenters.component';
+import { AddsensorComponent } from './addsensor/addsensor.component';
 
 const routes: Routes = [
   {path: '', component:LoginComponent},
@@ -17,7 +19,9 @@ const routes: Routes = [
   {path: 'chart', component:ChartComponent},
   {path: 'map', component:MapComponent},
   {path: 'areamap', component:AreamapComponent},
-  {path:'dashboard', component:DashboardComponent}
+  {path:'dashboard', component:DashboardComponent},
+  {path: 'chart2', component:DatacentersComponent},
+  {path:'addsensor', component:AddsensorComponent}
 ];
 
 @NgModule({

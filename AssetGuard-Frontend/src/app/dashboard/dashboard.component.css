@@ -1,40 +1,42 @@
 .map-container {
-    height: 500px;
-  }
-  
-  .container-fluid {
-    padding-right: 0;
-    padding-left: 0;
-  }
-  
-  .card {
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-body {
-    padding: 0; /* Remove default padding to align the map to the left */
-  }
-  
-  .notifications-container {
-    background-color: #f8f9fa;
-    border: 1px solid #dee2e6;
-    border-radius: 4px;
-    padding: 10px;
-  }
-  
-  .card {
-    box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .card-header {
-    background-color: #f8f9fa;
-    border-bottom: 1px solid #dee2e6;
-    font-weight: bold;
-  }
-  
-  .selected-sensor-card {
-    background-color: #e8f0fe;
-    border-radius: 4px;
-    padding: 10px;
-  }
-  
+  height: 500px;
+}
+
+.container-fluid {
+  padding-right: 0;
+  padding-left: 0;
+}
+
+.card {
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+}
+
+.card-body {
+  padding: 0; /* Remove default padding to align the map to the left */
+}
+
+.notifications-container {
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  border-radius: 4px;
+  padding: 10px;
+  max-height: 450px; /* Set the maximum height for the container */
+  overflow-y: auto; /* Enable vertical scrollbar when content exceeds container height */
+}
+
+.notifications-container::-webkit-scrollbar {
+  width: 5px; /* Set the width of the scrollbar */
+}
+
+.notifications-container::-webkit-scrollbar-track {
+  background: #f8f9fa; /* Set the background color of the scrollbar track */
+}
+
+.notifications-container::-webkit-scrollbar-thumb {
+  background-color: #cfd8dc; /* Set the color of the scrollbar thumb */
+  border-radius: 5px; /* Set the border radius of the scrollbar thumb */
+}
+
+.notifications-container::-webkit-scrollbar-thumb:hover {
+  background-color: #b0bec5; /* Set the color of the scrollbar thumb on hover */
+}

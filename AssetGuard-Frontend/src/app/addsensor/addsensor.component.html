@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit(myForm)" class="container mt-4">
+  <div class="card px-1 py-4">
+    <div class="card-body">
+      <h6 class="card-title mb-3">Add Sensor</h6>
+      <div class="form-group">
+        <label for="virtualSensorName">Name:</label>
+        <input type="text" class="form-control" id="virtualSensorName" formControlName="virtualSensorName" placeholder="Sensor Name">
+      </div>
+      <div class="form-group">
+        <label for="threshold">Threshold:</label>
+        <input type="text" class="form-control" id="threshold" formControlName="threshold" placeholder="Threshold Value">
+      </div>
+      <div class="form-group">
+        <label for="minValue">Lower Limit:</label>
+        <input type="text" class="form-control" id="minValue" formControlName="minValue" placeholder="Lower Limit">
+      </div>
+      <div class="form-group">
+        <label for="maxValue">Upper Limit:</label>
+        <input type="text" class="form-control" id="maxValue" formControlName="maxValue" placeholder="Upper Limit">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>

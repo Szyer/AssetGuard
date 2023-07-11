@@ -1,4 +1,5 @@
 <app-navbar></app-navbar>
+
 <div class="container-fluid">
   <div class="row p-3">
     <div class="col-lg-9 offset-lg-0">
@@ -10,15 +11,21 @@
         </div>
       </div>
     </div>
-    <div class="col-lg-3 notifications-container">
-      <div class="card">
-        <div class="card-header">
-          DataCenters
-        </div>
-        <div class="card-body">
-          <div class="selected-sensor-card p-3">
-            <!-- Your content here -->
-            <p>Sample content</p>
+    
+    <div class="col-lg-3">
+      <h5>Data Centers</h5>
+      <hr>
+      <div class="notifications-container">
+        <div class="card mb-4" *ngFor="let data of data">
+
+          <div class="card-header">
+            <i class="fa fa-server " ></i>    {{ "  " + data.cn}}
+          </div>
+          <div class="card-body">
+            <div class="selected-sensor-card p-3" [ngStyle]="{'background-color': data.color}">
+              <!-- Your content here -->
+              <p>{{data.info}}</p>
+            </div>
           </div>
         </div>
       </div>

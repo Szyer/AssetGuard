@@ -4,6 +4,7 @@ import * as proj4 from 'proj4';
 
 //import MapModule from 'highcharts/modules/map';
 import worldMap from '@highcharts/map-collection/custom/world.topo.json';
+import { Router } from '@angular/router';
 // import proj4 from 'proj4';
 
 //import { Options } from "highcharts";
@@ -15,7 +16,7 @@ import worldMap from '@highcharts/map-collection/custom/world.topo.json';
 })
 export class MapComponent implements AfterViewInit {
     @ViewChild('container') chartContainer !: ElementRef;
-
+    constructor(private router: Router) {}
     topology: any;
     chartOptions !: Highcharts.Options;
     data1: any;
@@ -33,7 +34,9 @@ export class MapComponent implements AfterViewInit {
 
     }
     //console.log(topology);
-
+    navigateToHome() {
+        window.location.href = '/home'; // Navigate to the home component using window.location.href
+      }
     //Highcharts: typeof Highcharts = Highcharts;
     //chartConstructor = 'mapChart';
     functionA() {
@@ -145,19 +148,18 @@ export class MapComponent implements AfterViewInit {
                     type: 'mapline',
                      id: 'animated-lines',
                     data: [
-                        {
+                        {  
                             geometry: {
                                 type: 'LineString',
                                 coordinates: [
                                     [48.516388, 15.552727], // Yemen
                                     [110.004444, -7.491667] // Java
                                 ],
-                                
                                
                             },
                            
                             color: '#666',
-                            
+                        
                         },
                         {
                             geometry: {
@@ -236,8 +238,8 @@ export class MapComponent implements AfterViewInit {
                     type: 'mappoint',
                     data: this.data1,
                     keys: ['hc-key', 'color', 'info'],
-                    name: 'Coffee'
                 },
+                
                 {
                     type: 'mappoint',
                     color: '#333',
@@ -250,14 +252,24 @@ export class MapComponent implements AfterViewInit {
                         {
                             name: 'Yemen',
                             geometry: {
+                                
                                 type: 'Point',
-                                coordinates: [48.516388, 15.552727] // Yemen
-                            },
+                                coordinates: [48.516388, 15.552727],
+                                
+                                
                             
+                        },
+                        events: {
+                            click: () => {
+                              // Navigate to the home component
+                              this.navigateToHome();
+                            }
+                          },
                             dataLabels: {
                                 align: 'right'
                             }
-                        },
+                        
+                    },
                         {
                             name: 'Java',
                             geometry: {
@@ -265,6 +277,12 @@ export class MapComponent implements AfterViewInit {
                                 type: 'Point',
                                 coordinates: [110.004444, -7.491667] // Java
                             },
+                            events: {
+                                click: () => {
+                                  // Navigate to the home component
+                                  this.navigateToHome();
+                                }
+                              },
 
                         },
                         {
@@ -273,6 +291,12 @@ export class MapComponent implements AfterViewInit {
                                 type: 'Point',
                                 coordinates: [55.5325, -21.114444] // La reunion
                             },
+                            events: {
+                                click: () => {
+                                  // Navigate to the home component
+                                  this.navigateToHome();
+                                }
+                              },
 
                         },
                         {
@@ -281,6 +305,12 @@ export class MapComponent implements AfterViewInit {
                                 type: 'Point',
                                 coordinates: [-43.2, -22.9] // Brazil
                             },
+                            events: {
+                                click: () => {
+                                  // Navigate to the home component
+                                  this.navigateToHome();
+                                }
+                              },
 
                             dataLabels: {
                                 align: 'right'
@@ -292,6 +322,12 @@ export class MapComponent implements AfterViewInit {
                                 type: 'Point',
                                 coordinates: [78, 21] // India
                             },
+                            events: {
+                                click: () => {
+                                  // Navigate to the home component
+                                  this.navigateToHome();
+                                }
+                              },
 
                         },
                         {
@@ -300,6 +336,12 @@ export class MapComponent implements AfterViewInit {
                                 type: 'Point',
                                 coordinates: [4.9, 52.366667] // Amsterdam
                             },
+                            events: {
+                                click: () => {
+                                  // Navigate to the home component
+                                  this.navigateToHome();
+                                }
+                              },
 
                         },
                         {
@@ -308,6 +350,12 @@ export class MapComponent implements AfterViewInit {
                                 type: 'Point',
                                 coordinates: [-61.030556, 14.681944] // Antilles
                             },
+                            events: {
+                                click: () => {
+                                  // Navigate to the home component
+                                  this.navigateToHome();
+                                }
+                              },
 
                             dataLabels: {
                                 align: 'right'
@@ -319,7 +367,12 @@ export class MapComponent implements AfterViewInit {
                                 type: 'Point',
                                 coordinates: [-53, 4] // Guyane
                             },
-
+                            events: {
+                                click: () => {
+                                  // Navigate to the home component
+                                  this.navigateToHome();
+                                }
+                              },
                             dataLabels: {
                                 align: 'right'
                             }
@@ -336,6 +389,6 @@ export class MapComponent implements AfterViewInit {
 
     }
 
-
+ 
 }
 

@@ -1,4 +1,4 @@
-package com.internship.EarlyWarningSystem.virtualSensors;
+package com.internship.EarlyWarningSystem.virtualSensors.DefaultSensors;
 
 import com.internship.EarlyWarningSystem.reading.ReadingRepository;
 import com.internship.EarlyWarningSystem.sensor.SensorType;
@@ -6,10 +6,8 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.time.Duration;
 import java.time.LocalDateTime;
 
 @Data
@@ -24,7 +22,7 @@ public class VirtualVoltageSensor implements SensorAll {
 
     private LocalDateTime lastUpdateTime = LocalDateTime.now();
 
-    private double voltage = getRandomVoltageInRange(208, 240);
+    private double voltage ;
 
     @Override
     public double read() {
