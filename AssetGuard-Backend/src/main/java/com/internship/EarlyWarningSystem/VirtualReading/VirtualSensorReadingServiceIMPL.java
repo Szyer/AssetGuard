@@ -31,6 +31,8 @@ public class VirtualSensorReadingServiceIMPL implements VirtualSensorReadingServ
 
 
     //Added RestAPi
+
+    //Aded tanamy ;msjfjd
     @Override
     public List<VirtualSensorReadingDTO> getReadingBySensorName(String sensorName) {
         List<VirtualSensorReading> virtualSensorReadings = virtualReadingRepository.findAll();
