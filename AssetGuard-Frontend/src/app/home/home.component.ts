@@ -41,6 +41,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   selectedSensorSubscription: Subscription | undefined;
   
   sensorName!: string;
+
+  allSensors !: any[];
+
+
   constructor(private sensorService: SensorService,
     private router: Router,
     private addSensorService:AddsenserService) { }
@@ -62,6 +66,8 @@ export class HomeComponent implements OnInit, OnDestroy {
       
       
         this.sensorService.startTrafficSensor();
+
+        this.showAllSensors();
       
     }
     
@@ -293,6 +299,20 @@ export class HomeComponent implements OnInit, OnDestroy {
     this.latestVoltageReading = JSON.parse(localStorage.getItem('latestVoltageReading') || 'null');
     this.latestBandwidthReading = JSON.parse(localStorage.getItem('latestBandwidthReading') || 'null');
     this.latestTrafficReading = JSON.parse(localStorage.getItem('latestTrafficReading') || 'null');
+  }
+
+
+  showAllSensors(){
+    this.addSensorService.getAllVirtualSensors().subscribe((res)=>{
+        console.log(res);
+        this.allSensors = res;
+    })
+  }
+
+  startVirtualSensor(virtualSensorName : string){
+
+    
+
   }
 }
 

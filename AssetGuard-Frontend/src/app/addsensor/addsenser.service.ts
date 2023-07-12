@@ -37,6 +37,11 @@ export class AddsenserService {
     return this.http.post<string>(`http://localhost:8081/api/v2/shutdown`, {}, { headers });
   }
 
+  getAllVirtualSensors() : Observable<any[]>{
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
+    return this.http.get<any[]>(`http://localhost:8081/api/v2/getAllSensors`, { headers });
+  }
+
 }
 
 

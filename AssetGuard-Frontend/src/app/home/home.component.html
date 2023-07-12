@@ -80,6 +80,20 @@
           <p class="card-subtitle text">{{ latestTrafficReading?.reading_timestamp | date:'short' }}</p>
         </div>
       </div>
+      <div *ngFor="let sensor of allSensors; let i = index">
+      <div class="card sensor-card" (click)="startBandwidthSensor()" (click)="selectSensor('BANDWIDTH')"
+        [class.selected]="selectedSensorType === 'BANDWIDTH'">
+        <div class="card-header">
+          <i class="fa fa-wifi sensor-icon"></i>
+          {{sensor.virtualSensorName}}
+        </div>
+        <div class="card-body">
+          <p class="card-text">{{ latestBandwidthReading?.sensor_name }}: {{ latestBandwidthReading?.reading_value }}
+          </p>
+          <p class="card-subtitle text">{{ latestBandwidthReading?.reading_timestamp | date:'short' }}</p>
+        </div>
+      </div>
+    </div>
     </div>
 
     <!-- Second Division: Chart and Selected Sensor Stats -->

@@ -20,5 +20,5 @@ public class VirtualSensorDTO {
 
     private int maxValue;
 
-    private boolean status=false;
+    private boolean status;
 }

@@ -1,15 +1,14 @@
 package com.internship.EarlyWarningSystem.virtualSensors;
 
-import com.internship.EarlyWarningSystem.reading.ReadingRepository;
-import com.internship.EarlyWarningSystem.sensor.SensorService;
-import com.internship.EarlyWarningSystem.sensor.SensorType;
-import com.internship.EarlyWarningSystem.virtualSensors.DefaultSensors.VirtualBandwidthSensor;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import com.internship.EarlyWarningSystem.VirtualReading.VirtualReadingRepository;
+import com.internship.EarlyWarningSystem.VirtualReading.VirtualSensorReading;
+import com.internship.EarlyWarningSystem.VirtualReading.VirtualSensorReadingDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -20,7 +19,7 @@ public class VirtualSensorController {
 
 
     @Autowired
-    private ReadingRepository readingRepository;
+    private VirtualReadingRepository readingRepository;
 
 
     @Autowired
@@ -46,6 +45,13 @@ public class VirtualSensorController {
     public ResponseEntity<String> shutdown() {
         virtualSensorService.stopReading();
         return ResponseEntity.ok("Scheduler stopped.");
+    }
+
+    @GetMapping("/getAllSensors")
+    public List<VirtualSensorDTO> getAllSensors(){
+        return virtualSensorService.getAllSensorData();
+
+
     }
 
 
