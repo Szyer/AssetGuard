@@ -22,7 +22,7 @@ AssetGuard is an early warning system that utilizes Spring and Angular to monito
 
    ```bash
    git clone https://github.com/your-username/BugTrackerX.git
-   cd BugTrackerX
+   cd AssetGuard
 
 
 ### Backend Setup
@@ -30,7 +30,7 @@ AssetGuard is an early warning system that utilizes Spring and Angular to monito
 1. Navigate to the backend directory or open in preferred IDE:
 
    ```bash
-   cd backend
+   cd AssetGuard-Backend
 
 2. Configure your PostgreSQL database settings in application.properties:
 
@@ -61,7 +61,7 @@ AssetGuard is an early warning system that utilizes Spring and Angular to monito
 1. Navigate to the frontend directory or open in preferred IDE:
    
    ```bash
-   cd frontend
+   cd AssetGuard-Frontend
    
 2. Install dependencies:
 
