@@ -18,6 +18,7 @@
       </div>
           
       <hr>
+<!--       Here we have to select the temperature sensor -->
       <div class="card sensor-card" (click)="startTemperatureSensor()" (click)="selectSensor('TEMPERATURE')"
         [class.selected]="selectedSensorType === 'TEMPERATURE'">
         <div class="card-header">
@@ -30,7 +31,7 @@
           <p class="card-subtitle text">{{ latestTemperatureReading?.reading_timestamp | date:'short' }}</p>
         </div>
       </div>
-
+<!--       Here we have to select the cooling sensor -->
       <div class="card sensor-card" (click)="startCoolingSensor()" (click)="selectSensor('COOLING')"
         [class.selected]="selectedSensorType === 'COOLING'">
         <div class="card-header">
@@ -42,7 +43,7 @@
           <p class="card-subtitle text">{{ latestCoolingReading?.reading_timestamp | date:'short' }}</p>
         </div>
       </div>
-
+<!--       Here we have to select the voltage sensor -->
       <div class="card sensor-card" (click)="startVoltageSensor()" (click)="selectSensor('VOLTAGE')"
         [class.selected]="selectedSensorType === 'VOLTAGE'">
         <div class="card-header">
@@ -54,7 +55,7 @@
           <p class="card-subtitle text">{{ latestVoltageReading?.reading_timestamp | date:'short' }}</p>
         </div>
       </div>
-
+<!--       Here we have to select the bandwidth sensor -->
       <div class="card sensor-card" (click)="startBandwidthSensor()" (click)="selectSensor('BANDWIDTH')"
         [class.selected]="selectedSensorType === 'BANDWIDTH'">
         <div class="card-header">
@@ -67,7 +68,7 @@
           <p class="card-subtitle text">{{ latestBandwidthReading?.reading_timestamp | date:'short' }}</p>
         </div>
       </div>
-
+<!--       Here we have to select the traffic sensor -->
       <div class="card sensor-card" (click)="startTrafficSensor()" (click)="selectSensor('TRAFFIC')"
         [class.selected]="selectedSensorType === 'TRAFFIC'">
         <div class="card-header">
@@ -80,6 +81,7 @@
           <p class="card-subtitle text">{{ latestTrafficReading?.reading_timestamp | date:'short' }}</p>
         </div>
       </div>
+      <!--       Here we have to select the bandwidth sensor -->
       <div *ngFor="let sensor of allSensors; let i = index">
       <div class="card sensor-card" (click)="startBandwidthSensor()" (click)="selectSensor('BANDWIDTH')"
         [class.selected]="selectedSensorType === 'BANDWIDTH'">
@@ -103,7 +105,7 @@
         <div *ngIf="selectedSensorType">
           <app-chart [sensorName]="selectedSensorType"></app-chart>
         </div>
-
+<!-- Stop Button -->
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-end">
             <button (click)="stopReading()" class="btn btn-danger">Stop Sensor</button>
